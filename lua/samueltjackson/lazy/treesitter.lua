@@ -23,6 +23,7 @@ return {
                 "python",
                 "yaml",
                 "json",
+                "templ"
             },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)

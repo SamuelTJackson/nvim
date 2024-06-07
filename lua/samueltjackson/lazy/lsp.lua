@@ -33,6 +33,8 @@ return {
             cmp_lsp.default_capabilities()
         )
 
+        require("lspconfig").gleam.setup({})
+
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -44,7 +46,9 @@ return {
                 "tailwindcss",
                 "eslint",
                 "pyright",
-                "terraformls"
+                "terraformls",
+                "templ",
+                "htmx"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -110,6 +114,8 @@ return {
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
+            completion = { completeopt = "noselect" },
+            preselect = cmp.PreselectMode.Select,
             snippet = {
                 expand = function(args)
                     require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
