@@ -24,6 +24,8 @@ return {
     },
 
     config = function()
+        vim.filetype.add({ extension = { templ = "templ" } })
+
         local cmp = require("cmp")
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
@@ -54,6 +56,19 @@ return {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup({
                         capabilities = capabilities,
+                    })
+                end,
+
+                ["htmx"] = function()
+                    require('lspconfig').htmx.setup({
+                        capabilities = capabilities,
+                        filetypes = { "html", "templ" },
+                    })
+                end,
+                ["tailwindcss"] = function()
+                    require('lspconfig').tailwindcss.setup({
+                        filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+                        init_options = { userLanguages = { templ = "html" } },
                     })
                 end,
                 ["tsserver"] = function()

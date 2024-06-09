@@ -78,5 +78,3 @@ autocmd("LspAttach", {
         end
     end,
 })
-
-vim.filetype.add({ extension = { templ = "templ" } })
