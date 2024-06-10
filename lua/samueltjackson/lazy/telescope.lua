@@ -10,6 +10,12 @@ return {
     config = function()
         local actions = require("telescope.actions")
         require("telescope").setup({
+            pickers = {
+                find_files = {
+                    find_command = { 'rg', '--files', '--hidden', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', },
+                    hidden = true
+                }
+            },
             defaults = {
                 mappings = {
                     i = {

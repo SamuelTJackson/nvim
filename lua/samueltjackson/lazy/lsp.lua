@@ -50,7 +50,8 @@ return {
                 "pyright",
                 "terraformls",
                 "templ",
-                "htmx"
+                "htmx",
+                "golangci_lint_ls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
