@@ -14,7 +14,14 @@ return {
                 find_files = {
                     find_command = { 'rg', '--files', '--hidden', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', },
                     hidden = true
-                }
+
+                },
+                grep_string = {
+                    additional_args = { "--hidden", '--files', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
+                },
+                live_grep = {
+                    additional_args = { "--hidden", '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
+                },
             },
             defaults = {
                 mappings = {

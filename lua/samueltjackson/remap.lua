@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.keymap.set("i", "jj", "<esc>")
 vim.keymap.set("n", "<leader>nt", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>jb", "<C-o>")
 vim.keymap.set("n", "<leader>jf", "<C-i>")
@@ -23,3 +24,6 @@ vim.keymap.set("n", "<c-h>", ":wincmd h<CR>", { silent = true })
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>q", ":cclose<CR>")
+vim.keymap.set("n", "<leader>c", ":GoTermClose<CR>")
+
+vim.keymap.set("n", "<leader>w", ":w<CR>")
