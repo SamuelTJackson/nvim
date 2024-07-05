@@ -51,7 +51,9 @@ return {
                 "terraformls",
                 "templ",
                 "htmx",
-                "golangci_lint_ls"
+                "golangci_lint_ls",
+                "zls",
+                "clangd"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
