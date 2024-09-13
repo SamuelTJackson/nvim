@@ -5,7 +5,7 @@ local formatters = {
     ["terraform-vars"] = { "terraform_fmt" },
     tf = { "terraform_fmt" },
     hcl = { "terragrunt_hclfmt" },
-    sql = { "sql_formatter" },
+    sql = { "sqlfmt" },
     json = { "jq" },
 
     -- ["*"] = { "codespell" },

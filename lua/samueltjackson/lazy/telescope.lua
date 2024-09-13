@@ -20,7 +20,7 @@ return {
                     additional_args = { "--hidden", '--files', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
                 },
                 live_grep = {
-                    additional_args = { "--hidden", '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
+                    additional_args = { "-u", "--hidden", '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
                 },
             },
             defaults = {

@@ -34,11 +34,11 @@ return {
     version = "v0.2.1",
     config = function()
         require("go").setup({
-            fillstruct = 'gopls', -- set to fillstruct if gopls fails to fill struct
+            fillstruct = 'fillstruct', -- set to fillstruct if gopls fails to fill struct
             lsp_keymaps = false,
         })
-        vim.keymap.set("n", "<leader>t", ToggleGoTestPkg, { noremap = true, silent = true })
 
+        vim.keymap.set("n", "<leader>t", "<cmd>GoTestFile<CR>")
         vim.keymap.set("n", "<leader>fs", "<cmd>GoFillStruct<CR>")
         vim.keymap.set("n", "<leader>ta", "<cmd>GoAddTest<CR>")
     end,

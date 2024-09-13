@@ -51,7 +51,6 @@ return {
                 "terraformls",
                 "templ",
                 "htmx",
-                "golangci_lint_ls",
                 "zls",
                 "clangd"
             },
