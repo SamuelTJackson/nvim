@@ -7,7 +7,6 @@ return {
 			vim.g.goimports = 0
 			-- disable simplify filter
 			vim.g.goimports_simplify = 1
-			vim.keymap.set("n", "<leader>i", "<cmd>GoImportRun<CR>")
 		end,
 	},
 }

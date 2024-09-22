@@ -44,7 +44,7 @@ return {
                 "lua_ls",
                 "gopls",
                 "bashls",
-                "tsserver",
+                "ts_ls",
                 "tailwindcss",
                 "eslint",
                 "pyright",
@@ -73,21 +73,13 @@ return {
                         init_options = { userLanguages = { templ = "html" } },
                     })
                 end,
-                ["tsserver"] = function()
+                ["ts_ls"] = function()
                     local lspconfig = require("lspconfig")
-                    lspconfig.tsserver.setup({
+                    lspconfig.ts_ls.setup({
                         on_attach = function(client)
                             client.server_capabilities.documentFormattingProvider = false
                             client.server_capabilities.documentRangeFormattingProvider = false
-
-                            vim.keymap.set("n", "<leader>i", organize_imports)
                         end,
-                        commands = {
-                            OrganizeImports = {
-                                organize_imports,
-                                description = "Organize Imports",
-                            },
-                        },
                     })
                 end,
 
@@ -166,7 +158,7 @@ return {
         })
         vim.lsp.buf.format({
             filter = function(client)
-                return client.name ~= "tsserver"
+                return client.name ~= "ts_ls"
             end,
         })
     end,

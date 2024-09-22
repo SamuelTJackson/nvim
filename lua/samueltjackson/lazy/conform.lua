@@ -12,8 +12,6 @@ local formatters = {
 }
 local prettier_ft = {
     "css",
-    "flow",
-    "graphql",
     "html",
     "javascriptreact",
     "javascript",

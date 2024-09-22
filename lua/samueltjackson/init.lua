@@ -29,6 +29,15 @@ autocmd({ "BufWritePre" }, {
     command = [[%s/\s\+$//e]],
 })
 
+local function organize_imports()
+    local params = {
+        command = "_typescript.organizeImports",
+        arguments = { vim.api.nvim_buf_get_name(0) },
+        title = "",
+    }
+    vim.lsp.buf.execute_command(params)
+end
+
 autocmd("LspAttach", {
     group = SamuelTJacksonGroup,
     callback = function(e)
@@ -66,11 +75,17 @@ autocmd("LspAttach", {
             vim.diagnostic.goto_prev()
         end, opts)
 
+        if filetype == "typescriptreact" then
+            vim.keymap.set("n", "<leader>i", organize_imports)
+        end
+
         -- Filetype-specific keymap
         if filetype == "go" then
             vim.keymap.set("n", "<leader>vr", function()
                 vim.cmd("GoRename")
             end, opts)
+
+			vim.keymap.set("n", "<leader>i", "<cmd>GoImportRun<CR>")
         else
             vim.keymap.set("n", "<leader>vr", function()
                 vim.lsp.buf.rename()
