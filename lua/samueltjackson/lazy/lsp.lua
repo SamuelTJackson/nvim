@@ -51,6 +51,7 @@ return {
                 "terraformls",
                 "templ",
                 "htmx",
+                "html",
                 "zls",
                 "clangd"
             },
@@ -60,7 +61,12 @@ return {
                         capabilities = capabilities,
                     })
                 end,
-
+                ["html"] = function()
+                    require('lspconfig').htmx.setup({
+                        capabilities = capabilities,
+                        filetypes = { "html", "templ" },
+                    })
+                end,
                 ["htmx"] = function()
                     require('lspconfig').htmx.setup({
                         capabilities = capabilities,

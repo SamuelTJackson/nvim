@@ -7,6 +7,8 @@ local formatters = {
     hcl = { "terragrunt_hclfmt" },
     sql = { "sqlfmt" },
     json = { "jq" },
+    templ = { "templ" },
+    sh = { "beautysh" }
 
     -- ["*"] = { "codespell" },
 }
@@ -20,7 +22,7 @@ local prettier_ft = {
     "scss",
     "typescript",
     "typescriptreact",
-    "vue",
+    "vue"
 }
 
 for _, filetype in pairs(prettier_ft) do

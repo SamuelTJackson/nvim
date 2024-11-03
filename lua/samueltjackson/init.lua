@@ -85,11 +85,35 @@ autocmd("LspAttach", {
                 vim.cmd("GoRename")
             end, opts)
 
-			vim.keymap.set("n", "<leader>i", "<cmd>GoImportRun<CR>")
+            vim.keymap.set("n", "<leader>i", "<cmd>GoImportRun<CR>")
         else
             vim.keymap.set("n", "<leader>vr", function()
                 vim.lsp.buf.rename()
             end, opts)
         end
+    end,
+})
+
+autocmd("FocusGained", {
+    callback = function()
+        local closedBuffers = {}
+        vim.iter(vim.api.nvim_list_bufs())
+            :filter(function(bufnr)
+                local valid = vim.api.nvim_buf_is_valid(bufnr)
+                local loaded = vim.api.nvim_buf_is_loaded(bufnr)
+                return valid and loaded
+            end)
+            :filter(function(bufnr)
+                local bufPath = vim.api.nvim_buf_get_name(bufnr)
+                local doesNotExist = vim.loop.fs_stat(bufPath) == nil
+                local notSpecialBuffer = vim.bo[bufnr].buftype == ""
+                local notNewBuffer = bufPath ~= ""
+                return doesNotExist and notSpecialBuffer and notNewBuffer
+            end)
+            :each(function(bufnr)
+                local bufName = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
+                table.insert(closedBuffers, bufName)
+                vim.api.nvim_buf_delete(bufnr, { force = true })
+            end)
     end,
 })
