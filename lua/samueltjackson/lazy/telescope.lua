@@ -12,15 +12,15 @@ return {
         require("telescope").setup({
             pickers = {
                 find_files = {
-                    find_command = { 'rg', '--files', '--hidden', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', '-g', '!**zig-cache/*', '-g', '!**zig-out/*', },
+                    find_command = { 'rg', '--no-ignore', '--files', '--hidden', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', '-g', '!**zig-cache/*', '-g', '!**zig-out/*', },
                     hidden = true
 
                 },
                 grep_string = {
-                    additional_args = { "--hidden", '--files', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
+                    additional_args = { '--no-ignore', "--hidden", '--files', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
                 },
                 live_grep = {
-                    additional_args = { "-u", "--hidden", '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
+                    additional_args = { '--no-ignore', "-u", "--hidden", '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
                 },
             },
             defaults = {

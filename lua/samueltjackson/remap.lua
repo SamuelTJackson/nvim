@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.keymap.set("i", "jj", "<esc>")
-vim.keymap.set("n", "<leader>nt", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>jb", "<C-o>")
 vim.keymap.set("n", "<leader>jf", "<C-i>")
 vim.keymap.set("n", "<leader>sp", "<cmd>silent !tmux neww tmux-sessionizer<CR>")

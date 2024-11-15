@@ -1,12 +1,3 @@
-local function organize_imports()
-    local params = {
-        command = "_typescript.organizeImports",
-        arguments = { vim.api.nvim_buf_get_name(0) },
-        title = "",
-    }
-    vim.lsp.buf.execute_command(params)
-end
-
 return {
     "neovim/nvim-lspconfig",
     version = "*",
@@ -36,7 +27,6 @@ return {
         )
 
         require("lspconfig").gleam.setup({})
-
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -53,12 +43,25 @@ return {
                 "htmx",
                 "html",
                 "zls",
-                "clangd"
+                "clangd",
+                "ltex"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup({
                         capabilities = capabilities,
+                    })
+                end,
+                ["ltex"] = function()
+                    require('lspconfig').ltex.setup({
+                        capabilities = capabilities,
+                        flags = { debounce_text_changes = 300 },
+                        filetypes = { "html", "templ", "go", "md", "lua" },
+                        settings = {
+                            ltex = {
+                                language = "en"
+                            }
+                        },
                     })
                 end,
                 ["html"] = function()
