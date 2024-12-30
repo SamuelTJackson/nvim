@@ -32,7 +32,6 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "gopls",
                 "bashls",
                 "ts_ls",
                 "tailwindcss",
@@ -93,26 +92,6 @@ return {
                                 runtime = { version = "Lua 5.1" },
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                },
-                            },
-                        },
-                    })
-                end,
-                ["gopls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.gopls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            gopls = {
-                                buildFlags = { "-tags=integration,fixtures" },
-                                completeUnimported = true,
-                                usePlaceholders = true,
-                                staticcheck = true,
-                                analyses = {
-                                    nilness = true,
-                                    shadow = false,
-                                    unusedparams = true,
-                                    unusewrites = true,
                                 },
                             },
                         },
