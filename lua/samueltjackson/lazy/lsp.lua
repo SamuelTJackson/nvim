@@ -36,6 +36,7 @@ return {
                 "ts_ls",
                 "tailwindcss",
                 "eslint",
+                "gopls",
                 "pyright",
                 "terraformls",
                 "templ",
@@ -93,6 +94,61 @@ return {
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
                                 },
+                            },
+                        },
+                    })
+                end,
+                ["gopls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.gopls.setup({
+                        on_attach = function(client)
+                            vim.keymap.set("n", "<leader>t", "<cmd>GoTestFile<CR>")
+                            vim.keymap.set("n", "<leader>fs", "<cmd>GoFillStruct<CR>")
+                            vim.keymap.set("n", "<leader>ta", "<cmd>GoAddTest<CR>")
+                        end,
+                        capabilities = capabilities,
+                        settings = {
+                            gopls = {
+                                analyses = {
+                                    ST1003 = true,
+                                    fieldalignment = false,
+                                    fillreturns = true,
+                                    nilness = true,
+                                    nonewvars = true,
+                                    shadow = true,
+                                    undeclaredname = true,
+                                    unreachable = true,
+                                    unusedparams = true,
+                                    unusedwrite = true,
+                                    useany = true
+                                },
+                                buildFlags = { "-tags", "integration,fixtures" },
+                                codelenses = {
+                                    gc_details = true,
+                                    generate = true,
+                                    regenerate_cgo = true,
+                                    test = true,
+                                    tidy = true,
+                                    upgrade_dependency = true,
+                                    vendor = true
+                                },
+                                completeUnimported = true,
+                                gofumpt = false,
+                                hints = {
+                                    assignVariableTypes = false,
+                                    compositeLiteralFields = true,
+                                    compositeLiteralTypes = true,
+                                    constantValues = true,
+                                    functionTypeParameters = true,
+                                    parameterNames = true,
+                                    rangeVariableTypes = true
+                                },
+                                ["local"] = "...",
+                                matcher = "Fuzzy",
+                                semanticTokens = true,
+                                staticcheck = true,
+                                symbolMatcher = "fuzzy",
+                                usePlaceholders = true
                             },
                         },
                     })

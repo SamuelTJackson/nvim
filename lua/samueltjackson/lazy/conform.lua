@@ -1,6 +1,6 @@
 local formatters = {
     lua = { "stylua" },
-    go = { "gofumpt" },
+    go = { "goimports", "gofumpt" },
     terraform = { "terraform_fmt" },
     ["terraform-vars"] = { "terraform_fmt" },
     tf = { "terraform_fmt" },
