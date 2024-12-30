@@ -79,17 +79,12 @@ autocmd("LspAttach", {
             vim.keymap.set("n", "<leader>i", organize_imports)
         end
 
+        vim.keymap.set("n", "<leader>vr", function()
+            vim.lsp.buf.rename()
+        end, opts)
         -- Filetype-specific keymap
         if filetype == "go" then
-            vim.keymap.set("n", "<leader>vr", function()
-                vim.cmd("GoRename")
-            end, opts)
-
             vim.keymap.set("n", "<leader>i", "<cmd>GoImportRun<CR>")
-        else
-            vim.keymap.set("n", "<leader>vr", function()
-                vim.lsp.buf.rename()
-            end, opts)
         end
     end,
 })

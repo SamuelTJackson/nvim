@@ -44,7 +44,7 @@ return {
                 "html",
                 "zls",
                 "clangd",
-                "ltex"
+                "typos_lsp",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -52,16 +52,8 @@ return {
                         capabilities = capabilities,
                     })
                 end,
-                ["ltex"] = function()
-                    require('lspconfig').ltex.setup({
-                        capabilities = capabilities,
-                        flags = { debounce_text_changes = 300 },
-                        filetypes = { "html", "templ", "go", "md", "lua" },
-                        settings = {
-                            ltex = {
-                                language = "en"
-                            }
-                        },
+                ["typos_lsp"] = function()
+                    require('lspconfig').typos_lsp.setup({
                     })
                 end,
                 ["html"] = function()

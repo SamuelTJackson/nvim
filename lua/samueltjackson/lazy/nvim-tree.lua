@@ -1,11 +1,18 @@
 local gwidth = vim.api.nvim_list_uis()[1].width
 local gheight = vim.api.nvim_list_uis()[1].height
-local width = 60
+local width = 120
 local height = 20
 
 return {
     "nvim-tree/nvim-tree.lua",
     opts = {
+        update_focused_file = {
+            enable = true,
+        },
+        git = {
+            ignore = false,
+        },
+        filters = { custom = { "^.git$" } },
         sort = {
             sorter = "case_sensitive",
         },

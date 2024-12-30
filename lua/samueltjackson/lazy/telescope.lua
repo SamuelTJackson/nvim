@@ -14,7 +14,6 @@ return {
                 find_files = {
                     find_command = { 'rg', '--no-ignore', '--files', '--hidden', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', '-g', '!**zig-cache/*', '-g', '!**zig-out/*', },
                     hidden = true
-
                 },
                 grep_string = {
                     additional_args = { '--no-ignore', "--hidden", '--files', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
