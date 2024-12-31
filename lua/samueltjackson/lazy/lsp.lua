@@ -145,7 +145,7 @@ return {
                                 },
                                 ["local"] = "...",
                                 matcher = "Fuzzy",
-                                semanticTokens = true,
+                                semanticTokens = false,
                                 staticcheck = true,
                                 symbolMatcher = "fuzzy",
                                 usePlaceholders = true
