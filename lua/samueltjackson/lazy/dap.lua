@@ -48,6 +48,7 @@ return {
             require('dap').continue()
         end
 
-        vim.keymap.set("n", "<leader>dd", "<cmd> lua load_config_and_continue() <cr>")
+        vim.keymap.set("n", "<leader>dd", "<cmd>lua load_config_and_continue()<CR>")
+        vim.keymap.set("n", "<leader>db", ":GoBreakToggle<CR>")
     end
 }
